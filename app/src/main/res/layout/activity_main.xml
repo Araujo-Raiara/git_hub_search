@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context=".ui.activity.MainActivity">
 
     <TextView
         android:id="@+id/tv_title"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tied_user_name"
+        android:id="@+id/til_user_name"
         style="?attr/textInputFilledStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -35,6 +35,7 @@
         app:startIconDrawable="@drawable/ic_search">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#E0E0E0"/>
@@ -51,7 +52,7 @@
         android:layout_marginTop="@dimen/margin_small"
         app:layout_constraintStart_toStartOf="@id/tv_title"
         app:layout_constraintEnd_toEndOf="@id/tv_title"
-        app:layout_constraintTop_toBottomOf="@id/tied_user_name"
+        app:layout_constraintTop_toBottomOf="@id/til_user_name"
         android:backgroundTint="#8FBC8B"
         android:elevation="@dimen/margin_default"
         android:text="@string/confirm_btn_text"
@@ -63,6 +64,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:listitem="@layout/repository_item"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="@id/tv_title"
         app:layout_constraintEnd_toEndOf="@id/tv_title"
         app:layout_constraintTop_toBottomOf="@id/btn_confirm_name"
