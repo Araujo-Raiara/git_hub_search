@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.app.githubsearch.domain.UserRepository
-import com.app.githubsearch.domain.repository.GitHubSearchRepository
+import com.app.githubsearch.core.di.NetworkResult
 import com.app.githubsearch.domain.usecase.GetRepositoriesUseCase
 import kotlinx.coroutines.launch
 
@@ -13,14 +12,16 @@ class GitHubSearchViewModel(
     private val getRepositories: GetRepositoriesUseCase
 ) : ViewModel() {
 
-    private val _listRepositories : MutableLiveData<List<UserRepository>> = MutableLiveData()
-    val listRepositories: LiveData<List<UserRepository>> get() = _listRepositories
+    private val _listRepositories: MutableLiveData<NetworkResult> = MutableLiveData()
+    val listRepositories: LiveData<NetworkResult> get() = _listRepositories
 
-    fun getAllRepoitories(name: String) {
-        viewModelScope.launch {
+    fun getAllRepositories(name: String) = viewModelScope.launch {
+        kotlin.runCatching {
             val requestResponse = getRepositories.getAllRepositories(name)
-            _listRepositories.postValue(requestResponse)
-        }
+            _listRepositories.postValue(NetworkResult.Success(requestResponse))
+        }.onFailure {
+            _listRepositories.postValue(NetworkResult.Error(it))
 
+        }
     }
 }

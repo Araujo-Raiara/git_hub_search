@@ -3,4 +3,5 @@
     <dimen name="margin_default">16dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="text_size">18sp</dimen>
+    <dimen name="corner_radius_default">4dp</dimen>
 </resources>
