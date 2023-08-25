@@ -7,6 +7,19 @@
     android:background="@color/white"
     tools:context=".ui.activity.MainActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/av_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:lottie_autoPlay="true"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/loading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:lottie_loop="true"/>
+
     <TextView
         android:id="@+id/tv_title"
         style="@style/TextAppearance.MaterialComponents.Headline4"
