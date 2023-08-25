@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.app.githubsearch.core.di.NetworkResult
 import com.app.githubsearch.databinding.ActivityMainBinding
 import com.app.githubsearch.domain.UserRepository
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupListeners() {
         binding.apply {
             btnConfirmName.setOnClickListener {
+                handleLoadingScenery()
                 gitHubSearchViewModel.getAllRepositories(binding.tietUserName.text.toString())
             }
         }
@@ -49,13 +51,17 @@ class MainActivity : AppCompatActivity() {
             when (it) {
                 is NetworkResult.Error -> handleErrorResponse(it.message)
                 NetworkResult.Loading -> handleLoadingScenery()
-                is NetworkResult.Success -> handleSuccessScenery(it.listRepositories)
+                is NetworkResult.Success -> {
+                    binding.avLoading.isVisible = false
+                    handleSuccessScenery(it.listRepositories)
+
+                }
             }
         }
     }
 
     private fun handleLoadingScenery() {
-        //TODO("to implement")
+        binding.avLoading.isVisible = true
     }
 
     private fun setupShareRepository() {
