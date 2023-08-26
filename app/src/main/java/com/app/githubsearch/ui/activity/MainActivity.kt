@@ -42,6 +42,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleErrorResponse(error: Throwable) {
+        binding.avLoading.isVisible = false
+        binding.errorScenery.isVisible = true
+        binding.rvRepositories.isVisible = false
         print(error.message)
         Toast.makeText(this, "Algo de errado aconteceu, tente novamente", Toast.LENGTH_SHORT).show()
     }

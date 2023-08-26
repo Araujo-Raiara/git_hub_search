@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.app.githubsearch.core.di.NetworkResult
 import com.app.githubsearch.domain.usecase.GetRepositoriesUseCase
 import kotlinx.coroutines.launch
+import java.lang.NullPointerException
 
 class GitHubSearchViewModel(
     private val getRepositories: GetRepositoriesUseCase
@@ -18,7 +19,7 @@ class GitHubSearchViewModel(
     fun getAllRepositories(name: String) = viewModelScope.launch {
         kotlin.runCatching {
             val requestResponse = getRepositories.getAllRepositories(name)
-            _listRepositories.postValue(NetworkResult.Success(requestResponse))
+            _listRepositories.postValue(NetworkResult.Error(NullPointerException()))
         }.onFailure {
             _listRepositories.postValue(NetworkResult.Error(it))
 
