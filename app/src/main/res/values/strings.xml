@@ -3,4 +3,5 @@
     <string name="title_txt">GitHubSearch</string>
     <string name="hint_txt">Nome do usuário </string>
     <string name="confirm_btn_text">Confirmar</string>
+    <string name="try_again_btn_txt">Tentar novamente</string>
 </resources>
