@@ -42,9 +42,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleErrorResponse(error: Throwable) {
-        binding.avLoading.isVisible = false
-        binding.errorScenery.isVisible = true
-        binding.rvRepositories.isVisible = false
+        binding.apply {
+            avLoading.isVisible = false
+            errorScenery.isVisible = true
+            rvRepositories.isVisible = false
+            btnConfirmName.isVisible = false
+            tilUserName.isVisible = false
+            btnTryAgain.isVisible = true
+        }
+        gitHubSearchViewModel.getAllRepositories(binding.tietUserName.text.toString())
         print(error.message)
         Toast.makeText(this, "Algo de errado aconteceu, tente novamente", Toast.LENGTH_SHORT).show()
     }

@@ -19,7 +19,7 @@ class GitHubSearchViewModel(
     fun getAllRepositories(name: String) = viewModelScope.launch {
         kotlin.runCatching {
             val requestResponse = getRepositories.getAllRepositories(name)
-            _listRepositories.postValue(NetworkResult.Error(NullPointerException()))
+            _listRepositories.postValue(NetworkResult.Success(requestResponse))
         }.onFailure {
             _listRepositories.postValue(NetworkResult.Error(it))
 
