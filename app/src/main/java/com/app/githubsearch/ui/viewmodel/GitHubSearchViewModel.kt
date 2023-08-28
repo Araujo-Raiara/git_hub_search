@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.app.githubsearch.core.di.NetworkResult
 import com.app.githubsearch.domain.usecase.GetRepositoriesUseCase
 import kotlinx.coroutines.launch
-import java.lang.NullPointerException
 
 class GitHubSearchViewModel(
     private val getRepositories: GetRepositoriesUseCase

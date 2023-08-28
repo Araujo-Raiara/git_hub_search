@@ -63,7 +63,6 @@ class MainActivity : AppCompatActivity() {
                 is NetworkResult.Success -> {
                     binding.avLoading.isVisible = false
                     handleSuccessScenery(it.listRepositories)
-
                 }
             }
         }
