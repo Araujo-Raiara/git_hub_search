@@ -1,4 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext{
+        moshi_version = '1.14.0'
+        retrofit_version = '2.9.0'
+        koin_version = '3.4.3'
+        lottie_version = '6.1.0'
+    }
+}
 plugins {
     id 'com.android.application' version '8.0.0' apply false
     id 'com.android.library' version '8.0.0' apply false
